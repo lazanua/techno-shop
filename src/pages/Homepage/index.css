@@ -1,0 +1,8 @@
+.advantages {
+  font-family: var(--first-family);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;
+  color: var(--dark);
+}

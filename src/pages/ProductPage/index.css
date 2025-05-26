@@ -1,0 +1,20 @@
+.tab {
+  border-bottom: 1px solid var(--gray-scale---10);
+}
+.active-tab {
+  color: var(--action---secondary);
+  border-bottom: 1px solid var(--action---secondary);
+}
+.product-describe {
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--dark-grey);
+
+  p {
+    font-family: "Lato Regular";
+  }
+  h4 {
+    font-family: "Lato Bold";
+    margin: 10px 0;
+  }
+}

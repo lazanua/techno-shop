@@ -1,0 +1,12 @@
+.game {
+  background-image: url("../../assets/img/homepage/gamezone/bg.jpg");
+}
+.cart__category-bg {
+  transition: all 0.2s ease-in;
+  &:hover {
+    box-shadow: 0 0 10px 0 #eb04ff;
+    img {
+      drop-shadow: 0 0 10px 0 #eb04ff;
+    }
+  }
+}

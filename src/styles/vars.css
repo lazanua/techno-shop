@@ -1,0 +1,24 @@
+:root {
+  --dark: #060f42;
+  --soft: #f4f8fb;
+  --white: #fff;
+  --dark-grey: #333;
+  --first-family: "Lato", sans-serif;
+  --second-family: "Roboto", sans-serif;
+  --first-family-500: "Lato Medium", sans-serif;
+
+  --dark-grey: #333;
+  --active-button-stroke: rgba(38, 99, 255, 0.5);
+  --action---primary: #06a56c;
+  --action---secondary: #01579b;
+  --action-primary-hover: #37bd8d;
+  --action-secondary-hover: #3582bf;
+  --accenty---red: #e93232;
+  --accent---orange: #ffcd1b;
+  --some---1: #d9d9d9;
+  --gray-scale---100: #000;
+  --gray-scale---60: #666;
+  --gray-scale---40: #999;
+  --gray-scale---20: #ccc;
+  --gray-scale---10: #e6e6e6;
+}

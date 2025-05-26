@@ -1,0 +1,23 @@
+.info-block {
+  width: 758px;
+  padding: 16px 16px 16px 24px;
+  color: var(--dark-grey);
+  font-family: var(--first-family-500);
+  .text-blue {
+    color: var(--action---secondary);
+  }
+}
+@media (max-width: 768px) {
+  .info-block {
+    width: 100%;
+  }
+}
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info-row img {
+  max-width: 24px;
+  max-height: 24px;
+}

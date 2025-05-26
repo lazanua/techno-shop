@@ -1,0 +1,32 @@
+footer {
+  font-family: var(--first-family-500);
+  font-size: 15px;
+  line-height: 133%;
+  color: var(--some---1);
+  h3 {
+    font-size: 18px;
+    font-family: "Lato Bold";
+    margin-bottom: 16px;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .border {
+    border-bottom: 1px solid #6f738d;
+    border-top: 1px solid #6f738d;
+  }
+  .socials img {
+    transition: opacity 0.2s ease-in;
+    &:hover {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}
+input,
+textarea {
+  color: var(--dark);
+  &::placeholder {
+    color: var(--gray-scale---40);
+  }
+}

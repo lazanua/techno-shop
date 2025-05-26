@@ -1,0 +1,41 @@
+.subtitle {
+  font-family: "Lato Bold";
+  font-size: 14px;
+  line-height: 114%;
+  color: var(--dark-grey);
+}
+.text {
+  font-family: var(--first-family-500);
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--dark-grey);
+}
+.block {
+  padding: 12px 10px;
+  border: 1px solid var(--gray-scale---10);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  width: 180px;
+  cursor: pointer;
+  align-items: center;
+}
+@media (max-width: 1024px) {
+  .block {
+    width: 140px;
+  }
+}
+.select {
+  cursor: pointer;
+  padding: 6px 12px;
+  &:hover {
+    background-color: var(--gray-scale---10);
+  }
+}
+.options {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid var(--gray-scale---10);
+  width: 180px;
+  display: block;
+}
