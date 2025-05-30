@@ -18,13 +18,13 @@ import { Link } from "react-router-dom";
 interface BurgerMenuProps {
   showTheModal: (modalType: ModalType) => void;
   isMobile: boolean;
-  isModalOpen: boolean;
+  showTheModalMobile: (modalType: ModalType) => void;
 }
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({
   showTheModal,
   isMobile,
-  isModalOpen,
+  showTheModalMobile,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const blockRef = useRef<HTMLDivElement>(null);
@@ -55,7 +55,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
   // }, [isModalOpen]);
 
   const onClickModalBtn = (modalType: ModalType) => {
-    // setClickOnBtnModal(true);
+    setClickOnBtnModal(true);
     showTheModal(modalType);
     // console.log(clickOnBtnModal);
   };
@@ -157,10 +157,15 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
               <img src={basketIcon} className="w-[24px] h-[24px]" alt="" />
               <p>Корзина</p>
             </button>
-            <button className="flex gap-[16px] items-center" data-type="button">
+            <button
+              className="flex gap-[16px] items-center"
+              data-type="button"
+              onClick={() => showTheModalMobile("compare")}
+            >
               <img src={comparIcon} className="w-[24px] h-[24px]" alt="" />
               <p>Порівняння</p>
             </button>
+
             <button
               className="flex gap-[16px] items-center"
               onClick={() => showTheModal("favorites")}

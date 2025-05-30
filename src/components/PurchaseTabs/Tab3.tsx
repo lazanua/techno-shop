@@ -15,9 +15,9 @@ const Tab3: FC<{ office: string }> = ({ office }) => {
     false,
   ]);
 
-  const onChangeLocalOffice = (value: string) => {
-    setLocalOffice(value);
-  };
+  // const onChangeLocalOffice = (value: string) => {
+  //   setLocalOffice(value);
+  // };
   const onClickLocalOffice = (index: number) => {
     setLocalOffices((prevArray) =>
       prevArray.map((item, i) => (i === index ? !item : item))
@@ -89,7 +89,7 @@ const Tab3: FC<{ office: string }> = ({ office }) => {
               </div>
               {isOficcesOpen && (
                 <div className="absolute bg-white z-20 w-[100%] rounded-[4px] border">
-                  {localOffices.map((item, index) => (
+                  {localOffices.map((_, index) => (
                     <p
                       className="paddings bg-[white] hover:bg-[--gray-scale---10] text-[var(--dark-grey)] cursor-pointer "
                       key={index}

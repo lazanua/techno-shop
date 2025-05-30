@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { NewsType } from "../../data/news";
 import resetIcon from "../../assets/img/pages/news/reset-icon.svg";
-import axios from "axios";
 import PagePath from "../../components/PagePath/PagePath";
 import ArticleContainer from "../../components/ArticleContainer/ArticleContainer";
 import Pagination from "../../components/Pagination/Pagination";
@@ -85,7 +84,7 @@ const News: FC<{ news: NewsType[]; fetchData: () => void }> = ({
       <h2 className="subtitle">Новини</h2>
       <div className="grid grid-cols-4 gap-[16px]">
         {!isLoading &&
-          Array.from({ length: 16 }, (_, index) => (
+          Array.from({ length: 16 }, (_) => (
             <div className="">
               <ArticleSkeleton />
             </div>

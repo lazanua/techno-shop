@@ -18,6 +18,25 @@ import { Link } from "react-router-dom";
 import ArticleSkeleton from "../../components/Skeletons/ArticleSkeletons/ArticleSkeletons";
 import { categories } from "../../data/categories";
 import arrowDown from "../../assets/img/homepage/arrow-down.svg";
+import advantage1 from "../../assets/img/advantages-icons/1.svg";
+import advantage2 from "../../assets/img/advantages-icons/2.svg";
+import advantage3 from "../../assets/img/advantages-icons/3.svg";
+import advantage4 from "../../assets/img/advantages-icons/4.svg";
+import advantage5 from "../../assets/img/advantages-icons/5.svg";
+import advantage6 from "../../assets/img/advantages-icons/6.svg";
+import advantage7 from "../../assets/img/advantages-icons/7.svg";
+import insta1 from "../../assets/img/instagram-images/1.jpg";
+import insta2 from "../../assets/img/instagram-images/2.jpg";
+import { categoriesIconsActive } from "../../components/CategoriesComponent/CategoriesComponent";
+const advantagesIcons = [
+  advantage1,
+  advantage2,
+  advantage3,
+  advantage4,
+  advantage5,
+  advantage6,
+  advantage7,
+];
 
 interface HomepageProps {
   onClickBuyBtn: (
@@ -26,7 +45,6 @@ interface HomepageProps {
   ) => void;
   products: ProductType[];
   news: NewsType[];
-  fetchData: () => void;
   onClickAddToFavorite: (
     event: React.MouseEvent<HTMLButtonElement>,
     product: ProductType
@@ -41,7 +59,6 @@ const Homepage: FC<HomepageProps> = ({
   onClickBuyBtn,
   products,
   news,
-  fetchData,
   onClickAddToFavorite,
   onClickAddToCompare,
 }) => {
@@ -118,10 +135,7 @@ const Homepage: FC<HomepageProps> = ({
                   style={{ border: "1px solid var(--action---secondary)" }}
                   key={index}
                 >
-                  <img
-                    src={`/img/categories-icons/${index + 1}-active.svg`}
-                    alt=""
-                  />
+                  <img src={categoriesIconsActive[index]} alt="" />
                   <p className="text text-[12px] leading-[1.33] text-[var(--action---secondary)] text-center">
                     {category.categoryName}
                   </p>
@@ -140,11 +154,7 @@ const Homepage: FC<HomepageProps> = ({
                   key={index}
                 >
                   <div className="w-[60px] h-[60px] mb-[6px]">
-                    <img
-                      src={`/img/advantages-icons/${index + 1}.svg`}
-                      alt=""
-                      className=""
-                    />
+                    <img src={advantagesIcons[index]} alt="" className="" />
                   </div>
 
                   <div className="text-bold text-[12px] text-[var(--dark)] text-center max-w-[117px]">
@@ -347,12 +357,12 @@ const Homepage: FC<HomepageProps> = ({
           <div className="lg:mx-0 mx-auto">
             <h2 className="subtitle">Інстаграм</h2>
             <div className="grid items-center grid-cols-2 md:grid-cols-3 lg:flex p-[8px] gap-[8px] shadow max-w-fit">
-              <img src="/img/instagram-images/1.jpg" alt="" />
-              <img src="/img/instagram-images/2.jpg" alt="" />
-              <img src="/img/instagram-images/1.jpg" alt="" />
-              <img src="/img/instagram-images/2.jpg" alt="" />
-              <img src="/img/instagram-images/1.jpg" alt="" />
-              <img src="/img/instagram-images/2.jpg" alt="" />
+              <img src={insta1} alt="" />
+              <img src={insta2} alt="" />
+              <img src={insta1} alt="" />
+              <img src={insta2} alt="" />
+              <img src={insta1} alt="" />
+              <img src={insta2} alt="" />
             </div>
             <div className=" link-wrapper">
               <a href="" className="link ">
@@ -379,7 +389,7 @@ const Homepage: FC<HomepageProps> = ({
           <img src={partner2} alt="" />
         </div>
         <div className=" link-wrapper">
-          <a href="" className="link ">
+          <a href="/" className="link ">
             Всі партнери
           </a>
           <img src={arrowRight} alt="" />

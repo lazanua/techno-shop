@@ -30,7 +30,7 @@ const Cart: FC<ProductProps> = ({
   const [isOpenDetails, setIsOpenDetails] = useState<boolean>(false);
   const mainParametrs = product.parameters.slice(0, 4);
   return (
-    <Link to={`/product/${product.id}`}>
+    <Link to={`/product/${id}`}>
       <div
         className={`${!isOpenDetails && "shadow"} ${
           isOpenDetails && "cart--active"

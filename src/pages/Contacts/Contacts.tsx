@@ -154,7 +154,6 @@ const Contacts = () => {
         </div>
         <div className="max-w-[766px]">
           <MapComponent
-            width={700}
             height={calculateHeight(width)}
             img={marker}
             iconHeight={58}

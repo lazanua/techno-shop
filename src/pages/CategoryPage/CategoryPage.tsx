@@ -5,7 +5,6 @@ import arrowRight from "../../assets/img/product-page/arrow-right.svg";
 import { categories } from "../../data/categories";
 import { ProductType } from "../../data/products";
 import Cart from "../../components/Cart/Cart";
-import PagePath from "../../components/PagePath/PagePath";
 import "./index.css";
 
 interface CaregoryPageProps {
@@ -24,8 +23,7 @@ const CaregoryPage: FC<CaregoryPageProps> = ({
   onClickAddToFavorite,
 }) => {
   const [categoryProducts, setCategoryProducts] = useState<ProductType[]>([]);
-  const [isOpenSubCategory, setIsOpenSubCategory] = useState<boolean>(false);
-  const [currentSubCategory, setCurrentSubCategory] = useState<number>(-1);
+  const isOpenSubCategory = false;
   let { category } = useParams<{ category: string }>();
   const [isFilteredOpen, setIsFilteredOpen] = useState<boolean[]>([
     true,
@@ -61,9 +59,9 @@ const CaregoryPage: FC<CaregoryPageProps> = ({
     false,
   ]);
 
-  const onClickSubCategory = (id: number) => {
-    setIsOpenSubCategory(true);
-  };
+  // const onClickSubCategory = (number) => {
+  //   setIsOpenSubCategory(true);
+  // };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -167,7 +165,7 @@ const CaregoryPage: FC<CaregoryPageProps> = ({
         )}
       </div>
       <div className="flex gap-[10px] my-[24px]">
-        {filtersSelected.map((item, index) => (
+        {filtersSelected.map((item) => (
           <button
             className="flex gap-[10px] border px-[16px] py-[4px] rounded-[20px]"
             onClick={() => deleteFilter(item)}
@@ -263,7 +261,7 @@ const CaregoryPage: FC<CaregoryPageProps> = ({
           </div>
 
           <div className="flex flex-col gap-[24px]">
-            {isFilteredOpen.map((item, indexFilter) => (
+            {isFilteredOpen.map((_, indexFilter) => (
               <div className="flex flex-col gap-[12px]">
                 <button
                   className="flex justify-between"
@@ -380,6 +378,7 @@ const CaregoryPage: FC<CaregoryPageProps> = ({
                 onClickBuyBtn={onClickBuyBtn}
                 id={product.id}
                 onClickAddToFavorite={onClickAddToFavorite}
+                onClickAddToCompare={onClickAddToFavorite}
               />
             ))}
 

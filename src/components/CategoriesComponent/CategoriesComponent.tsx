@@ -1,6 +1,52 @@
 import { FC } from "react";
 import { categories } from "../../data/categories";
 import { Link } from "react-router-dom";
+
+import icon1 from "../../assets/img/categories-icons/1.svg";
+import icon2 from "../../assets/img/categories-icons/2.svg";
+import icon3 from "../../assets/img/categories-icons/3.svg";
+import icon4 from "../../assets/img/categories-icons/4.svg";
+import icon5 from "../../assets/img/categories-icons/5.svg";
+import icon6 from "../../assets/img/categories-icons/6.svg";
+import icon7 from "../../assets/img/categories-icons/7.svg";
+import icon8 from "../../assets/img/categories-icons/8.svg";
+import icon9 from "../../assets/img/categories-icons/9.svg";
+import icon10 from "../../assets/img/categories-icons/10.svg";
+import icon1Active from "../../assets/img/categories-icons/1-active.svg";
+import icon2Active from "../../assets/img/categories-icons/2-active.svg";
+import icon3Active from "../../assets/img/categories-icons/3-active.svg";
+import icon4Active from "../../assets/img/categories-icons/4-active.svg";
+import icon5Active from "../../assets/img/categories-icons/5-active.svg";
+import icon6Active from "../../assets/img/categories-icons/6-active.svg";
+import icon7Active from "../../assets/img/categories-icons/7-active.svg";
+import icon8Active from "../../assets/img/categories-icons/8-active.svg";
+import icon9Active from "../../assets/img/categories-icons/9-active.svg";
+import icon10Active from "../../assets/img/categories-icons/10-active.svg";
+export const categoriesIcons = [
+  icon1,
+  icon2,
+  icon3,
+  icon4,
+  icon5,
+  icon6,
+  icon7,
+  icon8,
+  icon9,
+  icon10,
+];
+export const categoriesIconsActive = [
+  icon1Active,
+  icon2Active,
+  icon3Active,
+  icon4Active,
+  icon5Active,
+  icon6Active,
+  icon7Active,
+  icon8Active,
+  icon9Active,
+  icon10Active,
+];
+
 interface CategoriesComponentProps {
   chooseCategory: (index: number) => void | null;
   id: number;
@@ -33,9 +79,11 @@ const CategoriesComponent: FC<CategoriesComponentProps> = ({
                     <div className="flex w-[24px] h-[24px] justify-center items-center">
                       <img
                         className=""
-                        src={`/img/categories-icons/${index + 1}${
-                          index === id ? "-active" : ""
-                        }.svg`}
+                        src={
+                          index === id
+                            ? categoriesIconsActive[index]
+                            : categoriesIcons[index]
+                        }
                         alt=""
                       />
                     </div>

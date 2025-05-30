@@ -1,12 +1,11 @@
 import React from "react";
 import axios from "axios";
-import { FC, useState, useEffect, useContext, createContext } from "react";
+import { FC, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Homepage from "./pages/Homepage/Homepage";
 import "./styles/main.css";
 import ProductPage from "./pages/ProductPage/ProductPage";
-import Page404 from "./pages/Page404/Page404";
 import Footer from "./components/Footer/Footer";
 import Overlay from "./components/Overlay/Overlay";
 import CategoryPage from "./pages/CategoryPage/CategoryPage";
@@ -22,17 +21,14 @@ import Search from "./pages/Search/Search";
 import SubCategory from "./pages/SubCategory/SubCategory";
 import Comparisons from "./pages/Comparisons/Comparisons";
 import { ComparProduct } from "./data/products";
-import { categories } from "./data/categories";
 
 const App: FC = () => {
   const [comparProducts, setComparProducts] = useState<ComparProduct[]>([]);
 
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [news, setNews] = useState<NewsType[]>([]);
   const [isOverlayVisible, setOverlayVisible] = useState(false);
   const [newsData, setNewsData] = useState<NewsType[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
-  const [comparIndex, setCompareIndex] = useState<number>(0);
 
   const fetchData = async () => {
     try {
@@ -221,13 +217,12 @@ const App: FC = () => {
         {isOverlayVisible && <Overlay />}
         <Routes>
           <Route
-            path="/"
+            path="*"
             element={
               <Homepage
                 onClickBuyBtn={onClickBuyBtn}
                 products={products}
                 news={newsData}
-                fetchData={fetchData}
                 onClickAddToFavorite={onClickAddToFavorite}
                 onClickAddToCompare={onClickAddToCompare}
               />
@@ -304,7 +299,7 @@ const App: FC = () => {
               />
             }
           />
-          <Route path="*" element={<Page404 />} />
+          {/* <Route path="/404" element={<Page404 />} /> */}
         </Routes>
         <Footer />
       </Router>

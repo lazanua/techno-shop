@@ -3,6 +3,23 @@ import "./index.css";
 import Cart from "../Cart/Cart";
 import { Link } from "react-router-dom";
 import { ProductType } from "../../data/products";
+
+import img1 from "../../assets/img/game-zone-products/1.png";
+import img2 from "../../assets/img/game-zone-products/2.png";
+import img3 from "../../assets/img/game-zone-products/3.png";
+import img4 from "../../assets/img/game-zone-products/4.png";
+import img5 from "../../assets/img/game-zone-products/5.png";
+import img6 from "../../assets/img/game-zone-products/6.png";
+
+const categoryImages = [img1, img2, img3, img4, img5, img6];
+const categoryIndexes = [
+  [1, 9],
+  [1, 9],
+  [5, 0],
+  [4, 0],
+  [1, 2],
+  [2, 0],
+];
 interface GamesComponentProps {
   onClickBuyBtn: (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -43,7 +60,7 @@ const GamesComponent: FC<GamesComponentProps> = ({
             </h2>
             <div className="h-[2px] w-[100%] bg-white"></div>
           </div>
-          {/* <div className="grid grid-cols-2 md:grid-cols-6 gap-[16px] mt-[24px]">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-[16px] mt-[24px]">
             {products.length !== 0 &&
               gameProductsIndex.map((index) => (
                 <div className="" key={index}>
@@ -52,10 +69,11 @@ const GamesComponent: FC<GamesComponentProps> = ({
                     onClickBuyBtn={onClickBuyBtn}
                     id={products[index].id}
                     onClickAddToFavorite={onClickAddToFavorite}
+                    onClickAddToCompare={onClickAddToFavorite}
                   />
                 </div>
               ))}
-          </div> */}
+          </div>
           <div className="mt-[27px]">
             <Link to="/" className="flex gap-[7px] items-center justify-end">
               <span className="text-[14px] text text-white">
@@ -89,7 +107,9 @@ const GamesComponent: FC<GamesComponentProps> = ({
           <div className="grid grid-cols-2 md:grid-cols-6 justify-center lg:justify-between gap-[16px]">
             {gamesCategories.map((category, index) => (
               <div className="" key={index}>
-                <Link to="/category">
+                <Link
+                  to={`/categories/${categoryIndexes[index][0]}/${categoryIndexes[index][1]}`}
+                >
                   <div
                     className="bg-white  md:w-[160px] md:h-[160px]
                     w-[156px] h-[132px]
@@ -108,11 +128,7 @@ const GamesComponent: FC<GamesComponentProps> = ({
                   
                     "
                     >
-                      <img
-                        src={`/img/game-zone-products/${index + 1}.png`}
-                        alt=""
-                        className=""
-                      />
+                      <img src={categoryImages[index]} alt="" className="" />
                     </div>
                     <img
                       src={`/img/game-zone-products/${index + 1}.png`}

@@ -14,7 +14,7 @@ const CompareList: FC<ComparListProps> = ({
 }) => {
   return (
     <div className="">
-      <div className="static md:absolute w-[324px] md:right-0 bg-white p-[16px] shadow">
+      <div className="static md:absolute w-[324px] md:right-0 bg-white p-[16px] shadow rounded-[8px]">
         <p className="subsubtitle mb-[16px]">Списки порівнянь</p>
         {comparProducts.length > 0 ? (
           <div className="flex flex-col gap-[16px]">

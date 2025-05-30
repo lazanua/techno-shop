@@ -6,13 +6,13 @@ import img3 from "../../assets/img/pages/discounts/3.jpg";
 import img4 from "../../assets/img/pages/discounts/4.png";
 import { motion, AnimatePresence } from "framer-motion";
 const Discount = () => {
-  const images = [
-    "https://usain.ua/blog/wp-content/uploads/2024/10/banner-laptops-2.png",
-    "https://usain.ua/blog/wp-content/uploads/2024/10/banner-laptops-e1728416364361-1440x604.jpg",
-    "https://i.dell.com/is/image/DellContent/content/dam/ss2/page-specific/dell-homepage/apj/modules/cs2404g0018-700634-gl-cs-co-aw-m16-site-banner-hp-feature-card-desktop-1440x1080.jpg?fmt=png-alpha&wid=1440&hei=1080",
-    "https://cdn.thewirecutter.com/wp-content/media/2024/07/laptopstopicpage-2048px-3685-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp",
-    "https://assets2.razerzone.com/images/pnx.assets/7fb8deac5d3c73e360bc687ed62be6cf/gaming-laptops-og-image.webp",
-  ];
+  // const images = [
+  //   "https://usain.ua/blog/wp-content/uploads/2024/10/banner-laptops-2.png",
+  //   "https://usain.ua/blog/wp-content/uploads/2024/10/banner-laptops-e1728416364361-1440x604.jpg",
+  //   "https://i.dell.com/is/image/DellContent/content/dam/ss2/page-specific/dell-homepage/apj/modules/cs2404g0018-700634-gl-cs-co-aw-m16-site-banner-hp-feature-card-desktop-1440x1080.jpg?fmt=png-alpha&wid=1440&hei=1080",
+  //   "https://cdn.thewirecutter.com/wp-content/media/2024/07/laptopstopicpage-2048px-3685-2x1-1.jpg?width=2048&quality=75&crop=2:1&auto=webp",
+  //   "https://assets2.razerzone.com/images/pnx.assets/7fb8deac5d3c73e360bc687ed62be6cf/gaming-laptops-og-image.webp",
+  // ];
 
   const [currentSlider, setCurrentSlider] = useState<number>(0);
   const [isVisible, setIsVisible] = useState<boolean>(true);

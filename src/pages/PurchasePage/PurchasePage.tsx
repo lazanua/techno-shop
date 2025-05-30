@@ -31,14 +31,13 @@ const PurchasePage: FC<PurchaseProps> = ({ usersProduct, changeCount }) => {
     { placeholder: "Прізвище", value: "" },
     { placeholder: "Номер телефону", value: "" },
   ]);
-  const [recipientContact, setRecipientContact] = useState([
+  const recipientContact = [
     { placeholder: "Ім'я", value: "" },
     { placeholder: "По-батькові", value: "" },
     { placeholder: "Прізвище", value: "" },
     { placeholder: "Номер телефону", value: "" },
-  ]);
+  ];
   const [isAnotherRecipient, setIsAnotherRecipient] = useState<boolean>(false);
-  const [selected, setSelected] = useState<string | null>(null);
   const [tab, setTab] = useState<number>(-1);
   const [isCitiesOpen, setIsSitiesOpen] = useState<boolean>(false);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
@@ -293,7 +292,7 @@ const PurchasePage: FC<PurchaseProps> = ({ usersProduct, changeCount }) => {
                               <input
                                 type="checkbox"
                                 checked={options[index].selected}
-                                onChange={(e) => handleChange(index)}
+                                onChange={() => handleChange(index)}
                                 className="checkbox-input"
                               />
                               <span className="checkmark"></span>
@@ -327,7 +326,6 @@ const PurchasePage: FC<PurchaseProps> = ({ usersProduct, changeCount }) => {
                               Європейська, 8
                             </p>
                             <MapComponent
-                              width={343}
                               height={146}
                               img={marker}
                               iconHeight={30}
@@ -378,7 +376,7 @@ const PurchasePage: FC<PurchaseProps> = ({ usersProduct, changeCount }) => {
                 <div className="mt-[16px]">
                   <div className="subsubtitle">Контактні дані отримувача</div>
                   <div className="grid grid-cols-2 gap-[16px]">
-                    {recipientContact.map((item, index) => (
+                    {recipientContact.map((item) => (
                       <input
                         type="text"
                         className="py-[13px] px-[8px]"

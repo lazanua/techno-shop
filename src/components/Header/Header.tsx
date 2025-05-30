@@ -79,7 +79,7 @@ const Header: FC<HeaderProps> = ({
   const [showModalMobile, setShowModalMobile] = useState(false);
   const [foundedProducts, setFoundedProducts] = useState<ProductType[]>([]);
   const [modalType, setModalType] = useState<ModalType>("basket");
-  const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+
   const [foundedCategories, setFoundedCategories] = useState<
     { name: string; index: number }[]
   >([]);
@@ -117,7 +117,6 @@ const Header: FC<HeaderProps> = ({
 
   useEffect(() => {
     if (searchValue === "") {
-      setIsSearchOpen(false);
       setFoundedProducts([]);
       setFoundedCategories([]);
       setHoverCategory(-1);
@@ -155,9 +154,8 @@ const Header: FC<HeaderProps> = ({
           product.title.toLowerCase().includes(searchValue.toLowerCase())
         )
       );
-      if (foundedCategories && foundedProducts) {
-        setIsSearchOpen(true);
-      }
+      // if (foundedCategories && foundedProducts) {
+      // }
     }
   }, [searchValue]);
 
@@ -186,7 +184,7 @@ const Header: FC<HeaderProps> = ({
                 <BurgerMenu
                   showTheModal={showTheModal}
                   isMobile={isMobile}
-                  isModalOpen={showModal}
+                  showTheModalMobile={showTheModalMobile}
                 />
               </div>
               <Link to="/">
@@ -202,7 +200,11 @@ const Header: FC<HeaderProps> = ({
             <div className="lg:flex hidden header-top justify-between  text-light py-[8px] items-center ">
               <nav className="flex justify-between items-center gap-[24px]">
                 <div className="mt-[-6px]">
-                  <BurgerMenu showTheModal={showTheModal} isMobile={isMobile} />
+                  <BurgerMenu
+                    showTheModal={showTheModal}
+                    isMobile={isMobile}
+                    showTheModalMobile={showTheModalMobile}
+                  />
                 </div>
                 <Link to="/discounts">Акції</Link>
                 <Link to="/contacts">Контакти</Link>
@@ -454,6 +456,14 @@ const Header: FC<HeaderProps> = ({
       {modalType === "phones" && (
         <ModalMobile show={showModalMobile} onClose={toggleModalMobile}>
           <PhoneNumbers mobile={showModalMobile} />
+        </ModalMobile>
+      )}
+      {modalType === "compare" && (
+        <ModalMobile show={showModalMobile} onClose={toggleModalMobile}>
+          <CompareList
+            comparProducts={comparProducts}
+            deleteComparList={deleteComparList}
+          />
         </ModalMobile>
       )}
     </header>

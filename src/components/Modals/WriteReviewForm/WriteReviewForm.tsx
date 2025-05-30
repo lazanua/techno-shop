@@ -1,17 +1,10 @@
 import { FC, useState } from "react";
 
-type FormInputs = string[];
-
 interface WriteReviewFormProps {
   closeModal: () => void;
 }
 const WriteReviewForm: FC<WriteReviewFormProps> = ({ closeModal }) => {
-  const [formInputs, setFormsInputs] = useState<FormInputs>([
-    "Ім'я",
-    "Email",
-    "Переваги",
-    "Недоліки",
-  ]);
+  const formInputs = ["Ім'я", "Email", "Переваги", "Недоліки"];
   const [userReview, setUserReview] = useState({
     name: "",
     email: "",
@@ -34,11 +27,11 @@ const WriteReviewForm: FC<WriteReviewFormProps> = ({ closeModal }) => {
   const onHoverRating = (index: number) => {
     if (rating[index] === false) {
       setRating((prevArray) =>
-        prevArray.map((item, i) => (i <= index ? true : false))
+        prevArray.map((_, i) => (i <= index ? true : false))
       );
     } else {
       setRating((prevArray) =>
-        prevArray.map((item, i) => (i >= index ? false : true))
+        prevArray.map((_, i) => (i >= index ? false : true))
       );
     }
     const countTrue = rating.filter((value) => value === true).length;

@@ -59,8 +59,9 @@ export const categories: CategoryType[] = [
         subSubCategories: [],
       },
       {
-        subCategory: "Кабелі живлення",
-        subCategoryImg: "https://i.can.ua/goods/989/989151.jpg",
+        subCategory: "Клавіатури",
+        subCategoryImg:
+          "https://api.e-server.com.ua/storage/151442/rs/U0851341_big_1693542134___rs_1200_1200.jpg",
         subSubCategories: [],
       },
     ],

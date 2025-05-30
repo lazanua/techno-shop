@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC } from "react";
 import arrowRight from "../../assets/img/pages/news/arrow-right.svg";
 import arrowLeft from "../../assets/img/pages/news/arrow-left.svg";
 
@@ -16,15 +16,15 @@ const Pagination: FC<PaginationProps> = ({
   nextPage,
   previusPage,
 }) => {
-  const [currentPages, setCurrentPages] = useState<number[]>([1]);
+  // const [currentPages, setCurrentPages] = useState<number[]>([1]);
 
-  useEffect(() => {
-    if (lengthNumbers >= 3) {
-      setCurrentPages([1, 2, 3]);
-    } else {
-      setCurrentPages(lengthNumbers === 1 ? [1] : [2]);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (lengthNumbers >= 3) {
+  //     setCurrentPages([1, 2, 3]);
+  //   } else {
+  //     setCurrentPages(lengthNumbers === 1 ? [1] : [2]);
+  //   }
+  // }, []);
 
   return (
     <div className="">

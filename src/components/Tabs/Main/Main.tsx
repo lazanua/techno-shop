@@ -66,12 +66,7 @@ const Main: FC<MainProps> = ({
               )}
 
               <div className="hidden md:block">
-                <ZoomImage
-                  src={mainImage}
-                  openModal={openModal}
-                  width={580}
-                  height={580}
-                />
+                <ZoomImage src={mainImage} width={580} height={580} />
               </div>
             </div>
             <h3 className="subtitle hidden md:block">Основні характеристики</h3>
@@ -259,11 +254,11 @@ const Main: FC<MainProps> = ({
             </h3>
             <div className="overflow-x-auto no-scrollbar" ref={reviewsRef}>
               <div className="flex flex-row md:flex-col gap-[16px] md:gap-[24px] max-w-[782px] md:max-w-[758px]">
-                {/* {mainReviews.map((review, index) => (
+                {mainReviews.map((review, index) => (
                   <div key={index}>
                     <ExtendedReview review={review} openModal={openModal} />
                   </div>
-                ))} */}
+                ))}
               </div>
             </div>
 

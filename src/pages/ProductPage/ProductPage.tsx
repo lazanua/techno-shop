@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { BasketsProduct, Products, ProductType } from "../../data/products";
+import { useParams } from "react-router-dom";
+import { BasketsProduct, ProductType } from "../../data/products";
 
 import ParametrComponent from "../../components/ParametrComponent/ParametrComponent";
 
@@ -15,6 +15,7 @@ import Main from "../../components/Tabs/Main/Main";
 import CreditInfo from "../../components/Modals/CreditInfo/CreditInfo";
 import { categories } from "../../data/categories";
 import ImagesModal from "../../components/Modals/ImagesModal/ImagesModal";
+import { Link } from "react-router-dom";
 import Cart from "../../components/Cart/Cart";
 import arrowRight from "../../assets/img/product-page/arrow-right.svg";
 export type ModalName =
@@ -47,7 +48,7 @@ const ProductPage: FC<ProductPageProps> = ({
   onClickAddToFavorite,
 }) => {
   const { id } = useParams<{ id: string }>();
-  const [index, setIndex] = useState(Number(id) - 1);
+  const index = Number(id) - 1;
   const [currentProduct, setCurrentProduct] = useState<ProductType>();
   const [tab, setTab] = useState<Tab>("main");
   const [currentModal, setCurrentModal] = useState<ModalName>("");
@@ -66,7 +67,7 @@ const ProductPage: FC<ProductPageProps> = ({
           setSimilarProducts((prev) => [...prev, products[i]]);
         }
       }
-      setSimilarProducts((prev) => prev.filter((item, index) => index < 6));
+      setSimilarProducts((prev) => prev.filter((_, index) => index < 6));
     }
   }, [products]);
 
@@ -93,7 +94,7 @@ const ProductPage: FC<ProductPageProps> = ({
     <div className="">
       {currentProduct && (
         <div className="container">
-          {/* <div className="flex gap-[10.5px] items-center mb-[51px]">
+          <div className="flex gap-[10.5px] items-center mb-[51px]">
             <Link to="/">
               <span className="link">Головна</span>
             </Link>
@@ -115,7 +116,7 @@ const ProductPage: FC<ProductPageProps> = ({
             <p className="text text-[14px] text-[var(--gray-scale---40)]">
               {currentProduct.title}
             </p>
-          </div> */}
+          </div>
           <div className="text-semibold mt-[24px] md:mt-0 text-[var(--dark)] text-[24px] md:text-[32px] leading-[1.12] mb-[12px]">
             {currentProduct.title}
           </div>
@@ -258,16 +259,17 @@ const ProductPage: FC<ProductPageProps> = ({
             />
           )}
           <h2 className="subtitle">Схожі товари</h2>
-          {/* <div className="grid grid-cols-6 gap-[16px] ">
+          <div className="grid grid-cols-6 gap-[16px] ">
             {similarProducts.map((product) => (
               <Cart
                 product={product}
                 onClickBuyBtn={onClickBuyBtn}
                 id={currentProduct.id}
                 onClickAddToFavorite={onClickAddToFavorite}
+                onClickAddToCompare={onClickAddToFavorite}
               />
             ))}
-          </div> */}
+          </div>
         </div>
       )}
       {currentProduct && (

@@ -29,7 +29,7 @@ const SubCategory: FC<SubCategoryProps> = ({
   const currentSubCategory = categories[
     Number(category) - 1
   ].subCategories.find(
-    (item, index) => index === Number(subcategory)
+    (_, index) => index === Number(subcategory)
   )?.subCategory;
 
   const [maxPrice, setMaxPrice] = useState(7500);
@@ -143,7 +143,7 @@ const SubCategory: FC<SubCategoryProps> = ({
       </div>
       <h2 className="subtitle">{currentSubCategory}</h2>
       <div className="flex gap-[10px] my-[24px]">
-        {filtersSelected.map((item, index) => (
+        {filtersSelected.map((item) => (
           <button
             className="flex gap-[10px] border px-[16px] py-[4px] rounded-[20px]"
             onClick={() => deleteFilter(item)}
@@ -238,7 +238,7 @@ const SubCategory: FC<SubCategoryProps> = ({
               />
             </div>
           </div>
-          {isFilteredOpen.map((item, indexFilter) => (
+          {isFilteredOpen.map((_, indexFilter) => (
             <div className="flex flex-col gap-[12px]">
               <button
                 className="flex justify-between"
@@ -354,6 +354,7 @@ const SubCategory: FC<SubCategoryProps> = ({
                 id={product.id}
                 onClickBuyBtn={onClickBuyBtn}
                 onClickAddToFavorite={onClickAddToFavorite}
+                onClickAddToCompare={onClickAddToFavorite}
               />
             ))}
         </div>

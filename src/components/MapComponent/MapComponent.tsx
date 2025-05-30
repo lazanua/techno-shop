@@ -3,15 +3,13 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngExpression } from "leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import marker from "../../assets/img/pages/purchase/marker.svg";
 
 const MapComponent: React.FC<{
-  width: number;
   height: number;
   img: string;
   iconHeight: number;
   iconWidth: number;
-}> = ({ width, height, img, iconHeight, iconWidth }) => {
+}> = ({ height, img, iconHeight, iconWidth }) => {
   const center: LatLngExpression = [48.4647, 35.0462];
   const zoom: number = 16;
   const customIcon = new L.Icon({

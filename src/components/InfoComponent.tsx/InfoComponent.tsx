@@ -111,7 +111,7 @@ const InfoComponent: FC<{ handleSetTab: (str: Tab) => void }> = ({
             <div className="h-[32px] text-blue flex justify-end">
               Безкоштовно
             </div>
-            {Array.from({ length: 4 }, (_, index) => (
+            {Array.from({ length: 4 }, (_) => (
               <div className="h-[32px] flex flex-col items-end">
                 <div className="">За тарифами перевізника</div>
                 <div className="text-blue">Чи безкоштовно від 5000 грн</div>

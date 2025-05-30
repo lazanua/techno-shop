@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 interface ModalProps {
   show: boolean;
@@ -22,9 +22,9 @@ const ModalMobile: React.FC<ModalProps> = ({ show, onClose, children }) => {
       className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50"
       onClick={handleOverlayClick}
     >
-      <div className="bg-white rounded-lg shadow-lg relative">
+      <div className="bg-white rounded-lg shadow-lg relative ">
         <button
-          className="absolute top-[26px] right-[24px] text-gray-600 hover:text-gray-900 cursor-pointer"
+          className="absolute top-[17px] right-[21px] text-gray-600 hover:text-gray-900 cursor-pointer"
           onClick={onClose}
         >
           <svg

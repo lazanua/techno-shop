@@ -6,7 +6,6 @@ import arrowDonwGrey from "../../assets/img/product-page/arrow-down-grey.svg";
 import filter1 from "../../assets/img/pages/search/filter1.svg";
 import filter2 from "../../assets/img/pages/search/filter2.svg";
 import Cart from "../../components/Cart/Cart";
-import { Link } from "react-router-dom";
 
 interface SearchProps {
   value: string;
@@ -39,10 +38,8 @@ const Search: FC<SearchProps> = ({
   useEffect(() => {
     //рандомна кількість товарів для прикладу
     setCountSubCategoriesExample(
-      categories.map((category, index) =>
-        category.subCategories.map((subcategory, subIndex) =>
-          Math.round(Math.random() * 100)
-        )
+      categories.map((category) =>
+        category.subCategories.map((_) => Math.round(Math.random() * 100))
       )
     );
   }, []);
@@ -495,6 +492,7 @@ const Search: FC<SearchProps> = ({
               onClickBuyBtn={onClickBuyBtn}
               id={product.id}
               onClickAddToFavorite={onClickAddToFavorite}
+              onClickAddToCompare={onClickAddToFavorite}
             />
           ))}
         </div>

@@ -3,7 +3,9 @@ import { categories } from "../../../data/categories";
 import arrowBlue from "../../../assets/img/header/arrow-blue.svg";
 import arrowGrey from "../../../assets/img/header/arrow-grey.svg";
 import arrowBlueMobile from "../../../assets/img/header/arrow-blue-mobile.svg";
-import { Link } from "react-router-dom";
+
+import { categoriesIcons } from "../../CategoriesComponent/CategoriesComponent";
+import { categoriesIconsActive } from "../../CategoriesComponent/CategoriesComponent";
 const CatalogModal = () => {
   const [currentOpenedCategory, setCurrentOpenedCategory] = useState(-1);
   const [isAllSubcategories, setIsAllSubcategories] = useState(false);
@@ -39,10 +41,11 @@ const CatalogModal = () => {
           >
             <div className="flex gap-[8px] pb-[14px]">
               <img
-                src={`/img/categories-icons/${index + 1}${
-                  currentOpenedCategory === index ? "-active" : ""
-                }.svg`}
-                className="w-[24px] h-[20px]"
+                src={
+                  currentOpenedCategory === index
+                    ? categoriesIconsActive[index]
+                    : categoriesIcons[index]
+                }
                 alt=""
               />
               <p

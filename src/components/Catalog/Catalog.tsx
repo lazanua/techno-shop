@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import CategoriesComponent from "../CategoriesComponent/CategoriesComponent";
 import { categories } from "../../data/categories";
 import { Link } from "react-router-dom";
+
 const Catalog: FC = ({}) => {
   const [currentCategory, setCurrentCategory] = useState<number>(-1);
   const chooseCategory = (index: number | null) => {
