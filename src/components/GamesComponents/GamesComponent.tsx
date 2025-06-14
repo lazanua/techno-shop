@@ -122,7 +122,7 @@ const GamesComponent: FC<GamesComponentProps> = ({
                   "
                   >
                     <div
-                      className="hidden md:block md:absolute 
+                      className="absolute
                     
                     w-[120%] h-[120%] top-0 left-[-15px]
                   
@@ -130,14 +130,6 @@ const GamesComponent: FC<GamesComponentProps> = ({
                     >
                       <img src={categoryImages[index]} alt="" className="" />
                     </div>
-                    <img
-                      src={`/img/game-zone-products/${index + 1}.png`}
-                      alt=""
-                      className="block md:hidden "
-                    />
-                    <p className="block md:hidden link text-center">
-                      {category}
-                    </p>
                   </div>
                   <div
                     className="

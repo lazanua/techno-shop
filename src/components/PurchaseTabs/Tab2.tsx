@@ -6,7 +6,7 @@ const Tab2: FC = () => {
       <div className="text-[var(--dark-grey)] mb-[12px]">
         Введіть вашу адресу
       </div>
-      <div className="flex gap-[16px]">
+      <div className="flex flex-wrap gap-[16px]">
         <input
           type="text"
           className="border px-[8px] py-[13px]"

@@ -188,7 +188,7 @@ const App: FC = () => {
     if (products[6] && products[11]) {
       setComparProducts([
         { category: "Планшети", products: [products[6], products[11]] },
-        { category: "Ноутбуки", products: [products[1], products[12]] },
+        { category: "Ноутбуки", products: [products[1]] },
       ]);
     }
   }, [products]);

@@ -4,6 +4,8 @@ import catalogIcon from "../../assets/img/header/catalog-icons.svg";
 import icon1 from "../../assets/img/pages/comprisons/icon1.svg";
 import icon2 from "../../assets/img/pages/comprisons/icon2.svg";
 import icon3 from "../../assets/img/pages/comprisons/icon3.svg";
+// import icon1Active from "../../assets/img/pages/comprisons/icon1-active.svg";
+// import icon3Active from "../../assets/img/pages/comprisons/icon3-active.svg";
 import cross from "../../assets/img/pages/comprisons/cross.svg";
 import { ComparProduct } from "../../data/products";
 
@@ -31,8 +33,8 @@ const Comparisons: FC<ComparisonsProps> = ({
     deleteComparList(index);
     setIsCurrentComparList(false);
   };
-
   useEffect(() => {
+    console.log(comparProducts);
     if (comparProducts.length > 0) {
       if (isCurrentComparList) {
         setCompareIndex(Number(id));
@@ -55,11 +57,15 @@ const Comparisons: FC<ComparisonsProps> = ({
           <div className="flex gap-[24px]">
             <button className="flex gap-[15px] items-center">
               <img src={icon1} alt="" />
-              <p>Тільки відмінності</p>
+              <p className="text-[var(--action---secondary)] text">
+                Тільки відмінності
+              </p>
             </button>
             <button className="flex gap-[15px] items-center">
               <img src={icon2} alt="" />
-              <p className="">Додати модель</p>
+              <p className="text-[var(--action---secondary)] text">
+                Додати модель
+              </p>
             </button>
             <button
               className="flex gap-[15px] items-center"
