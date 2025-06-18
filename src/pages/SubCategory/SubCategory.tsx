@@ -4,7 +4,7 @@ import { categories } from "../../data/categories";
 import { ProductType } from "../../data/products";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Cart from "../../components/Cart/Cart";
+import Card from "../../components/cards-components/Card/Card";
 import arrowRight from "../../assets/img/product-page/arrow-right.svg";
 interface SubCategoryProps {
   onClickBuyBtn: (
@@ -349,7 +349,7 @@ const SubCategory: FC<SubCategoryProps> = ({
         <div className="grid grid-cols-5 gap-[16px]">
           {isDataReceived &&
             categoryProducts.map((product) => (
-              <Cart
+              <Card
                 product={product}
                 id={product.id}
                 onClickBuyBtn={onClickBuyBtn}

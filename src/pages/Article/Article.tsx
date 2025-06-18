@@ -57,8 +57,8 @@ const Article: FC<{ news: NewsType[] }> = ({ news }) => {
         subLinkName={articleTitle}
       />
       {isLoading && (
-        <div className="flex justify-center gap-[24px]">
-          <div className="max-w-[960px] flex flex-col gap-[16px] text-left">
+        <div className="flex xl:flex-row flex-col justify-center gap-[24px]">
+          <div className="max-w-[960px] xl:mb-0 flex flex-col gap-[16px] text-left">
             <div className="">
               <h1 className="subtitle">{currentArticle?.title}</h1>
               <div className="text-p-grey">Новини {currentArticle?.date}</div>
@@ -130,7 +130,7 @@ const Article: FC<{ news: NewsType[] }> = ({ news }) => {
               можливо для обробки графіки, фото та редагування відео.
             </p>
           </div>
-          <div className="flex flex-col gap-[16px]">
+          <div className="flex flex-row mb-[30px] xl:mb-0 xl:flex-col gap-[16px]">
             <a href="">
               <img src={facebook} alt="facebook" />
             </a>
@@ -144,11 +144,13 @@ const Article: FC<{ news: NewsType[] }> = ({ news }) => {
         </div>
       )}
       <h3 className="subsubtitle mt-[8px]">Читайте також</h3>
-      <div className="flex gap-[16px]">
-        {otherNews.length !== 0 &&
-          otherNews.map((item) => (
-            <ArticleContainer article={item} id={item.id} />
-          ))}
+      <div className="max-w-full overflow-auto no-scrollbar">
+        <div className="w-[1016px] flex gap-[16px] justify-center">
+          {otherNews.length !== 0 &&
+            otherNews.map((item) => (
+              <ArticleContainer article={item} id={item.id} />
+            ))}
+        </div>
       </div>
     </div>
   );

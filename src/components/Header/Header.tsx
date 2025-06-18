@@ -180,7 +180,7 @@ const Header: FC<HeaderProps> = ({
         <div className="bg-dark">
           <div className="container block md:hidden">
             <div className="flex justify-between items-center py-[16px]">
-              <div className="">
+              <div className="z-30">
                 <BurgerMenu
                   showTheModal={showTheModal}
                   isMobile={isMobile}

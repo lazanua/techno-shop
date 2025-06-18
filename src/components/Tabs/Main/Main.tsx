@@ -14,7 +14,7 @@ import ParametrComponent from "../../ParametrComponent/ParametrComponent";
 import { ModalName, Tab } from "../../../pages/ProductPage/ProductPage";
 import ImagesScroll from "../../ImagesScroll/ImagesScroll";
 import ZoomImage from "../../ZoomImage/ZoomImage";
-import Price from "../../Price/Price";
+import Price from "../../cards-components/Price/Price";
 interface MainProps {
   currentProduct: ProductType;
   handleSetTab: (str: Tab) => void;
@@ -53,7 +53,7 @@ const Main: FC<MainProps> = ({
   return (
     <div className="">
       <div className="">
-        <div className="flex flex-col-reverse md:flex-row gap-[16px]">
+        <div className="flex flex-col-reverse md:flex-col xl:flex-row gap-[16px]">
           <div className="">
             <div className="flex flex-col md:flex-row gap-[16px] mb-[32px]">
               {currentProduct.images[0] !== "" && (
@@ -126,13 +126,16 @@ const Main: FC<MainProps> = ({
           </div>
 
           <div className="">
-            <img
-              className="block w-[328px] h-[328px] md:hidden"
-              src={mainImage}
-              alt=""
-            />
+            <div className="flex justify-center mb-[10px] xl:contents w-full">
+              <img
+                className="block w-[328px] h-[328px] md:hidden"
+                src={mainImage}
+                alt=""
+              />
+            </div>
+
             {currentProduct.images[0] !== "" && (
-              <div className="overflow-x-auto no-scrollbar">
+              <div className="overflow-x-auto no-scrollbar mb-[24px] xl:mb-0">
                 <div
                   className={`flex gap-[8px] md:hidden w-[${
                     currentProduct.images.length * 90 +
@@ -153,7 +156,7 @@ const Main: FC<MainProps> = ({
             )}
             <div className="flex justify-between items-center mb-[48px]">
               {currentProduct.notAvailable && (
-                <div className="flex gap-[12px]">
+                <div className="flex gap-[12px] w-full xl:w-full justify-between xl:justify-start">
                   <div className="bg-[var(--soft)] pl-[16px] pr-[12px] py-[10px] flex items-center">
                     <div className="flex gap-[10px] items-center">
                       <img src={notAvailableIcon} alt="" />
@@ -214,7 +217,7 @@ const Main: FC<MainProps> = ({
                     price={currentProduct.price}
                     discountedPrice={currentProduct.discountedPrice}
                   />
-                  <div className="flex md:hidden ">
+                  <div className="flex gap-[8px] items-center md:hidden ">
                     <button onClick={() => addFavoriteProduct(currentProduct)}>
                       <img src={compareIcon} alt="" />
                     </button>
@@ -249,10 +252,13 @@ const Main: FC<MainProps> = ({
 
             <div className="mt-[40px] mb-[24px] w-[100%] h-[1px] bg-[var(--gray-scale---10)]"></div>
             <InfoComponent handleSetTab={handleSetTab} />
-            <h3 className="subtitle mt-[24px]">
+            <h3 className="hidden md:block subtitle mt-[24px]">
               Відгуки {reviewExamples.length}
             </h3>
-            <div className="overflow-x-auto no-scrollbar" ref={reviewsRef}>
+            <div
+              className="hidden md:block overflow-x-auto no-scrollbar"
+              ref={reviewsRef}
+            >
               <div className="flex flex-row md:flex-col gap-[16px] md:gap-[24px] max-w-[782px] md:max-w-[758px]">
                 {mainReviews.map((review, index) => (
                   <div key={index}>

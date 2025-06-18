@@ -9,9 +9,9 @@ const ArticleContainer: FC<ArticleContainerProps> = ({ article, id }) => {
   return (
     <Link to={`/news/${id}`} onClick={() => window.scrollTo(0, 0)}>
       <div className="">
-        <div className="w-[370px]">
+        <div className="w-[242px] xl:w-[370px] h-[292px] xl:h-auto">
           <img
-            className="w-[371px] h-[209px] mb-[4px] object-cover"
+            className="w-[242px] xl:w-[371px] h-[136px] xl:h-[209px] mb-[4px] object-cover"
             src={article.img}
             alt=""
           />

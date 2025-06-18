@@ -3,7 +3,7 @@ import { ProductType, BasketsProduct } from "../../data/products";
 import favoritesIcon from "../../assets/img/product-page/favorites-icon.svg";
 import compareIcon from "../../assets/img/product-page/compare-icon.svg";
 import notAvailableIcon from "../../assets/img/product-page/not-available-icon.svg";
-import Price from "../Price/Price";
+import Price from "../cards-components/Price/Price";
 interface MiniCartProps {
   product: ProductType;
   addFavoriteProduct: (product: ProductType) => void;

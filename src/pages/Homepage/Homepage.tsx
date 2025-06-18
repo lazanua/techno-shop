@@ -3,7 +3,7 @@ import Banner from "../../components/Banner/Banner";
 import CategoriesComponent from "../../components/CategoriesComponent/CategoriesComponent";
 import "./index.css";
 import { ProductType } from "../../data/products";
-import Cart from "../../components/Cart/Cart";
+import Card from "../../components/cards-components/Card/Card";
 import { reviews } from "../../data/reviews";
 import GamesComponent from "../../components/GamesComponents/GamesComponent";
 import Review from "../../components/Review/Review";
@@ -174,7 +174,7 @@ const Homepage: FC<HomepageProps> = ({
               <>
                 {isMobile && isProductsOpen && index < 6 && (
                   <div className="" key={index}>
-                    <Cart
+                    <Card
                       product={product}
                       onClickBuyBtn={onClickBuyBtn}
                       id={product.id}
@@ -185,7 +185,7 @@ const Homepage: FC<HomepageProps> = ({
                 )}
                 {!isMobile && (
                   <div className="" key={index}>
-                    <Cart
+                    <Card
                       product={product}
                       onClickBuyBtn={onClickBuyBtn}
                       id={product.id}
@@ -196,7 +196,7 @@ const Homepage: FC<HomepageProps> = ({
                 )}
                 {isMobile && !isProductsOpen && index < 2 && (
                   <div className="" key={index}>
-                    <Cart
+                    <Card
                       product={product}
                       onClickBuyBtn={onClickBuyBtn}
                       id={product.id}

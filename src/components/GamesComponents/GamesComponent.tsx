@@ -1,6 +1,6 @@
 import { FC } from "react";
 import "./index.css";
-import Cart from "../Cart/Cart";
+import Card from "../cards-components/Card/Card";
 import { Link } from "react-router-dom";
 import { ProductType } from "../../data/products";
 
@@ -64,7 +64,7 @@ const GamesComponent: FC<GamesComponentProps> = ({
             {products.length !== 0 &&
               gameProductsIndex.map((index) => (
                 <div className="" key={index}>
-                  <Cart
+                  <Card
                     product={products[index]}
                     onClickBuyBtn={onClickBuyBtn}
                     id={products[index].id}

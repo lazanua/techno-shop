@@ -16,7 +16,7 @@ import CreditInfo from "../../components/Modals/CreditInfo/CreditInfo";
 import { categories } from "../../data/categories";
 import ImagesModal from "../../components/Modals/ImagesModal/ImagesModal";
 import { Link } from "react-router-dom";
-import Cart from "../../components/Cart/Cart";
+import Card from "../../components/cards-components/Card/Card";
 import arrowRight from "../../assets/img/product-page/arrow-right.svg";
 export type ModalName =
   | ""
@@ -94,29 +94,32 @@ const ProductPage: FC<ProductPageProps> = ({
     <div className="">
       {currentProduct && (
         <div className="container">
-          <div className="flex gap-[10.5px] items-center mb-[51px]">
-            <Link to="/">
-              <span className="link">Головна</span>
-            </Link>
-            <img src={arrowRight} alt="" />
-            <Link to={`/categories/${currentProduct.categoryId - 1}`}>
-              <span className="link">
-                {categories[currentProduct.categoryId - 1].categoryName}
-              </span>
-            </Link>
-            <img src={arrowRight} alt="" />
-            <Link
-              to={`/categories/${currentProduct.categoryId}/${
-                currentProduct.subCategoryId - 1
-              }`}
-            >
-              <span className="link">{currentProduct.subcategory}</span>
-            </Link>
-            <img src={arrowRight} alt="" />
-            <p className="text text-[14px] text-[var(--gray-scale---40)]">
-              {currentProduct.title}
-            </p>
+          <div className="w-full overflow-auto">
+            <div className="w-[1536px] flex gap-[10.5px] mt-[24px] md:mt-0  items-center mb-[51px]">
+              <Link to="/">
+                <span className="link">Головна</span>
+              </Link>
+              <img src={arrowRight} alt="" />
+              <Link to={`/categories/${currentProduct.categoryId - 1}`}>
+                <span className="link">
+                  {categories[currentProduct.categoryId - 1].categoryName}
+                </span>
+              </Link>
+              <img src={arrowRight} alt="" />
+              <Link
+                to={`/categories/${currentProduct.categoryId}/${
+                  currentProduct.subCategoryId - 1
+                }`}
+              >
+                <span className="link">{currentProduct.subcategory}</span>
+              </Link>
+              <img src={arrowRight} alt="" />
+              <p className="text text-[14px] text-[var(--gray-scale---40)]">
+                {currentProduct.title}
+              </p>
+            </div>
           </div>
+
           <div className="text-semibold mt-[24px] md:mt-0 text-[var(--dark)] text-[24px] md:text-[32px] leading-[1.12] mb-[12px]">
             {currentProduct.title}
           </div>
@@ -261,7 +264,7 @@ const ProductPage: FC<ProductPageProps> = ({
           <h2 className="subtitle">Схожі товари</h2>
           <div className="grid grid-cols-6 gap-[16px] ">
             {similarProducts.map((product) => (
-              <Cart
+              <Card
                 product={product}
                 onClickBuyBtn={onClickBuyBtn}
                 id={currentProduct.id}

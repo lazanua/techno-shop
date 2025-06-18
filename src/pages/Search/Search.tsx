@@ -5,7 +5,7 @@ import arrowDown from "../../assets/img/product-page/arrow-down.svg";
 import arrowDonwGrey from "../../assets/img/product-page/arrow-down-grey.svg";
 import filter1 from "../../assets/img/pages/search/filter1.svg";
 import filter2 from "../../assets/img/pages/search/filter2.svg";
-import Cart from "../../components/Cart/Cart";
+import Cart from "../../components/cards-components/Card/Card";
 
 interface SearchProps {
   value: string;

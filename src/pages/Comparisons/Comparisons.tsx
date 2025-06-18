@@ -4,6 +4,7 @@ import catalogIcon from "../../assets/img/header/catalog-icons.svg";
 import icon1 from "../../assets/img/pages/comprisons/icon1.svg";
 import icon2 from "../../assets/img/pages/comprisons/icon2.svg";
 import icon3 from "../../assets/img/pages/comprisons/icon3.svg";
+
 // import icon1Active from "../../assets/img/pages/comprisons/icon1-active.svg";
 // import icon3Active from "../../assets/img/pages/comprisons/icon3-active.svg";
 import cross from "../../assets/img/pages/comprisons/cross.svg";
