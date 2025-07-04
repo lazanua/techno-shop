@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { FC, useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Homepage from "./pages/Homepage/Homepage";
 import "./styles/main.css";

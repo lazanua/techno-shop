@@ -315,7 +315,7 @@ const PurchasePage: FC<PurchaseProps> = ({ usersProduct, changeCount }) => {
                           }`}
                         >
                           <div
-                            className={`flex justify-between w-[490px] rounded-[4px] `}
+                            className={`flex md:flex-row  flex-col justify-between w-[490px] rounded-[4px] `}
                             key={index}
                           >
                             <div className="flex gap-[8px]">
@@ -341,7 +341,7 @@ const PurchasePage: FC<PurchaseProps> = ({ usersProduct, changeCount }) => {
                               </div>
                             </div>
                             <div
-                              className={`text text-[12px] leading-[1.33]  ${
+                              className={`text text-[12px] leading-[1.33] pl-[28px] md:pl-0  ${
                                 index === 0
                                   ? "text-[var(--action---primary)]"
                                   : "text-[var(--dark)]"

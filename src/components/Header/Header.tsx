@@ -8,6 +8,7 @@ import basketIconMobile from "../../assets/img/header/basket-icon-mobile.svg";
 import favoritesIcon from "../../assets/img/header/favorites-icon.png";
 import arrowDown from "../../assets/img/header/arrow-down-dark.svg";
 import telephoneIconMobile from "../../assets/img/header/telephone-icon-mobile.svg";
+import telephoneIcon from "../../assets/img/header/telephone-icon.svg";
 import categoriesIconDark from "../../assets/img/header/categories-icon-dark.svg";
 import Catalog from "../Catalog/Catalog";
 import Modal from "../Modal/Modal";
@@ -175,10 +176,10 @@ const Header: FC<HeaderProps> = ({
 
   const [isNumberOpen, setIsNumberOpen] = useState<boolean>(false);
   return (
-    <header className="sticky z-10 w-[100%] top-0 md:mb-[32px]">
+    <header className="sticky z-10 w-[100%] top-0 lg:mb-[32px]">
       <div className="relative">
         <div className="bg-dark">
-          <div className="container block md:hidden">
+          <div className="container block lg:hidden">
             <div className="flex justify-between items-center py-[16px]">
               <div className="z-30">
                 <BurgerMenu
@@ -243,7 +244,7 @@ const Header: FC<HeaderProps> = ({
         <div className="bg-[var(--dark)] lg:bg-white py-[27.5px] lg:shadow">
           <div className="container">
             <div className=" flex justify-between">
-              <div className="md:block hidden">
+              <div className="lg:block hidden">
                 <Link to="/">
                   <img src={Logo} className="" alt="" />
                 </Link>
@@ -260,14 +261,15 @@ const Header: FC<HeaderProps> = ({
                   <img src={catalogIcon} alt="" />
                 </button>
               </div>
-              <button className="block md:hidden">
+              <button className="block lg:hidden">
                 <img src={searchIconMobile} alt="" />
               </button>
-              <div className="h-[42px] relative hidden md:flex">
+              <div className="h-[42px] relative hidden lg:flex">
                 <input
                   type="text"
                   placeholder="Пошук"
-                  className="xl:w-[710px] px-[10px] text-[14px] text-bold text-[var(--dark)]"
+                  className="w-[380px] xl:w-[600px] 2xl:w-[710px] px-[10px]
+                  text-[14px] text-bold text-[var(--dark)]"
                   value={searchValue}
                   onChange={(e) => changeSearchValue(e.target.value)}
                   onKeyDown={handleKeyDown}
@@ -355,67 +357,77 @@ const Header: FC<HeaderProps> = ({
                 )}
               </div>
               <button
-                className=" relative bg-white hidden md:block"
+                className=" relative bg-white hidden lg:block"
                 onMouseEnter={() => setIsNumberOpen(true)}
                 onMouseLeave={() => setIsNumberOpen(false)}
               >
-                <div className="flex items-center gap-[16px]">
-                  <span className="subtitle-blue">050 065 87 96</span>
-                  <img src={arrowDown} alt="" />
+                <div className="">
+                  <div className="2xl:flex hidden items-center gap-[16px]">
+                    <span className="subtitle-blue">050 065 87 96</span>
+                    <img src={arrowDown} alt="" />
+                  </div>
+
+                  <img
+                    className="w-[32px] hidden lg:block 2xl:hidden"
+                    src={telephoneIcon}
+                    alt=""
+                  />
                 </div>
                 {isNumberOpen && <PhoneNumbers mobile={showModalMobile} />}
               </button>
-              <div
-                className="relative hidden md:block"
-                onMouseEnter={() => setIsComprisonsOpen(true)}
-                onMouseLeave={() => setIsComprisonsOpen(false)}
-              >
-                <img src={icon1} alt="" />
-                {comparProducts.length !== 0 && (
-                  <div className="absolute flex items-center justify-center w-[20px] h-[20px] bg-[var(--accent---orange)] rounded-[50%] top-[-9px] right-[-6px]">
-                    <span className="text-[var(--dark)] leading-[0.8] text-900 text-[12px]">
-                      {comparProducts.length}
-                    </span>
-                  </div>
-                )}
-                {isComprisonsOpen && !isMobile && (
-                  <CompareList
-                    comparProducts={comparProducts}
-                    deleteComparList={deleteComparList}
+              <div className="flex 2xl:contents items-center gap-[22px]">
+                <div
+                  className="relative hidden lg:block"
+                  onMouseEnter={() => setIsComprisonsOpen(true)}
+                  onMouseLeave={() => setIsComprisonsOpen(false)}
+                >
+                  <img src={icon1} alt="" />
+                  {comparProducts.length !== 0 && (
+                    <div className="absolute flex items-center justify-center w-[20px] h-[20px] bg-[var(--accent---orange)] rounded-[50%] top-[-9px] right-[-6px]">
+                      <span className="text-[var(--dark)] leading-[0.8] text-900 text-[12px]">
+                        {comparProducts.length}
+                      </span>
+                    </div>
+                  )}
+                  {isComprisonsOpen && !isMobile && (
+                    <CompareList
+                      comparProducts={comparProducts}
+                      deleteComparList={deleteComparList}
+                    />
+                  )}
+                </div>
+                <button
+                  className="hidden lg:block   relative"
+                  onClick={() => showTheModal("favorites")}
+                >
+                  <img src={favoritesIcon} alt="" />
+                  {favoriteProducts.length !== 0 && (
+                    <div className="absolute flex items-center justify-center w-[20px] h-[20px] bg-[var(--accent---orange)] rounded-[50%] top-[-9px] right-[-6px]">
+                      <span className="text-[var(--dark)] leading-[0.8] text-900 text-[12px]">
+                        {favoriteProducts.length}
+                      </span>
+                    </div>
+                  )}
+                </button>
+                <button
+                  className="relative"
+                  onClick={() => showTheModal("basket")}
+                >
+                  <img
+                    src={basketIconMobile}
+                    className="block lg:hidden"
+                    alt=""
                   />
-                )}
+                  <img className="hidden lg:block" src={icon3} alt="" />
+                  {usersProduct.length !== 0 && (
+                    <div className="absolute w-[20px] h-[20px] bg-[var(--action---primary)] rounded-[50%] top-[-9px] right-[-6px]">
+                      <span className="text-[var(--soft)] lg:text-[var(--dark)] leading-[0.8] text-900 text-[12px]">
+                        {usersProduct.reduce((sum, obj) => sum + obj.count, 0)}
+                      </span>
+                    </div>
+                  )}
+                </button>
               </div>
-              <button
-                className="hidden md:block   relative"
-                onClick={() => showTheModal("favorites")}
-              >
-                <img src={favoritesIcon} alt="" />
-                {favoriteProducts.length !== 0 && (
-                  <div className="absolute flex items-center justify-center w-[20px] h-[20px] bg-[var(--accent---orange)] rounded-[50%] top-[-9px] right-[-6px]">
-                    <span className="text-[var(--dark)] leading-[0.8] text-900 text-[12px]">
-                      {favoriteProducts.length}
-                    </span>
-                  </div>
-                )}
-              </button>
-              <button
-                className="relative"
-                onClick={() => showTheModal("basket")}
-              >
-                <img
-                  src={basketIconMobile}
-                  className="block md:hidden"
-                  alt=""
-                />
-                <img className="hidden md:block" src={icon3} alt="" />
-                {usersProduct.length !== 0 && (
-                  <div className="absolute w-[20px] h-[20px] bg-[var(--action---primary)] rounded-[50%] top-[-9px] right-[-6px]">
-                    <span className="text-[var(--soft)] md:text-[var(--dark)] leading-[0.8] text-900 text-[12px]">
-                      {usersProduct.reduce((sum, obj) => sum + obj.count, 0)}
-                    </span>
-                  </div>
-                )}
-              </button>
             </div>
           </div>
         </div>

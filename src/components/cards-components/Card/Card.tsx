@@ -39,7 +39,7 @@ const Card: FC<ProductProps> = ({
           isOpenDetails && "cart--active"
         } ${
           product.isNew && "cart"
-        }  w-[156px] h-[323px] sm:w-[242px] sm:h-[390px] p-[12px] bg-white rounded-[4px] relative`}
+        }  w-[156px] h-[323px] md:w-[242px] md:h-[390px] p-[12px] bg-white rounded-[4px] relative`}
         // style={{ boxShadow: "0 2px 10px 0 rgba(50, 50, 71, 0.14)" }}
         onMouseEnter={() => setIsOpenDetails(true)}
         onMouseLeave={() => setIsOpenDetails(false)}
@@ -57,14 +57,14 @@ const Card: FC<ProductProps> = ({
         <img
           src={product.img}
           alt="Product"
-          className="mb-[12px] object-contain  w-[134px] h-[134px] sm:w-[214px] sm:h-[212px]"
+          className="mb-[12px] object-contain  w-[134px] h-[134px] md:w-[214px] md:h-[212px]"
         />
-        <div className="text text-[12px] sm:text-[14px] leading-[1.33] sm:leading-[1.14] h-[48px] sm:h-[32px] text-[var(--dark-grey)] max-h-[32px] overflow-hidden mb-[12px]">
+        <div className="text text-[12px] md:text-[14px] leading-[1.33] md:leading-[1.14] h-[48px] md:h-[32px] text-[var(--dark-grey)] max-h-[32px] overflow-hidden mb-[12px]">
           {product.title}
         </div>
-        <div className="flex gap-[2px] sm:gap-[6px]">
+        <div className="flex gap-[2px] md:gap-[6px]">
           {product.rating && <ReviewsStars rating={product.rating} />}
-          <div className="cart__reviews text-[10px] sm:text-[11px] ml-[10px] sm:ml-0">
+          <div className="cart__reviews text-[10px] md:text-[11px] ml-[10px] md:ml-0">
             Відгуків {product.reviewsCount}
           </div>
         </div>
@@ -100,12 +100,12 @@ const Card: FC<ProductProps> = ({
           )}
           {!product.notAvailable && (
             <button
-              className="button w-[40px] sm:w-[73px] flex items-center justify-center"
+              className="button w-[40px] md:w-[73px] flex items-center justify-center"
               style={{ padding: "10px 0" }}
               onClick={(e) => onClickBuyBtn(e, product.id)}
             >
-              <span className="hidden sm:block">купити</span>
-              <img src={buyIcon} className="block sm:hidden" alt="" />
+              <span className="hidden md:block">купити</span>
+              <img src={buyIcon} className="block md:hidden" alt="" />
             </button>
           )}
           {product.notAvailable && (
@@ -113,7 +113,7 @@ const Card: FC<ProductProps> = ({
               <div className="bg-[var(--soft)] pl-[8px] pr-[6px] py-[5px] flex items-center rounded-[4px]">
                 <div className="flex gap-[8px] items-center">
                   <img src={notAvailableIcon} alt="" />
-                  <div className="text text-[var(--gray-scale---40)] hidden sm:block">
+                  <div className="text text-[var(--gray-scale---40)] hidden md:block">
                     Немає в <br /> наявності
                   </div>
                 </div>

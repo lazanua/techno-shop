@@ -28,6 +28,7 @@ import advantage7 from "../../assets/img/advantages-icons/7.svg";
 import insta1 from "../../assets/img/instagram-images/1.jpg";
 import insta2 from "../../assets/img/instagram-images/2.jpg";
 import { categoriesIconsActive } from "../../components/CategoriesComponent/CategoriesComponent";
+import ProductsGrid from "../../components/ProductsGrid/ProductsGrid";
 const advantagesIcons = [
   advantage1,
   advantage2,
@@ -73,9 +74,6 @@ const Homepage: FC<HomepageProps> = ({
     }
   }, [news]);
 
-  const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
-
-  //показувати всі пролукти на мобілці чи ні
   const [isProductsOpen, setIsProductsOpen] = useState<boolean>(false);
 
   const onClickNextReview = () => {
@@ -110,6 +108,14 @@ const Homepage: FC<HomepageProps> = ({
   const onMouseLeaveCategories = () => {
     setCurrentCategory(-1);
   };
+
+  const gameProductsIndex = [2, 3, 4, 5, 8, 10];
+  const [gameProducts, setGameProducts] = useState<ProductType[]>([]);
+  useEffect(() => {
+    if (products.length > 0 && gameProducts.length === 0) {
+      setGameProducts(gameProductsIndex.map((index) => products[index]));
+    }
+  }, [products]);
 
   return (
     <div className="relative">
@@ -167,56 +173,17 @@ const Homepage: FC<HomepageProps> = ({
         </div>
       </div>
       <div className="container">
-        <h2 className="subtitle mt-[48px]">Топ продажів</h2>
-        <div className="flex items-center justify-center mx-auto">
-          <div className="grid justify-center items-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-[16px] mb-[70px]">
-            {products.slice(0, 12).map((product, index) => (
-              <>
-                {isMobile && isProductsOpen && index < 6 && (
-                  <div className="" key={index}>
-                    <Card
-                      product={product}
-                      onClickBuyBtn={onClickBuyBtn}
-                      id={product.id}
-                      onClickAddToFavorite={onClickAddToFavorite}
-                      onClickAddToCompare={onClickAddToCompare}
-                    />
-                  </div>
-                )}
-                {!isMobile && (
-                  <div className="" key={index}>
-                    <Card
-                      product={product}
-                      onClickBuyBtn={onClickBuyBtn}
-                      id={product.id}
-                      onClickAddToFavorite={onClickAddToFavorite}
-                      onClickAddToCompare={onClickAddToCompare}
-                    />
-                  </div>
-                )}
-                {isMobile && !isProductsOpen && index < 2 && (
-                  <div className="" key={index}>
-                    <Card
-                      product={product}
-                      onClickBuyBtn={onClickBuyBtn}
-                      id={product.id}
-                      onClickAddToFavorite={onClickAddToFavorite}
-                      onClickAddToCompare={onClickAddToCompare}
-                    />
-                  </div>
-                )}
-              </>
-            ))}
-          </div>
+        <h2 className="subtitle mt-[48px] ">Топ продажів</h2>
+        <div className="mb-[24px]">
+          <ProductsGrid
+            productsArr={products}
+            onClickBuyBtn={onClickBuyBtn}
+            onClickAddToFavorite={onClickAddToFavorite}
+            isWhiteText={false}
+          />
         </div>
       </div>
       <div className="container">
-        <div className="hidden sm:flex justify-end ">
-          <button className="link-wrapper   ">
-            <span className="link text-end">Дивитись усі товари</span>
-            <img src={arrowRight} alt="" />
-          </button>
-        </div>
         <div className="sm:hidden flex justify-between">
           <button
             className="link-wrapper"
@@ -242,10 +209,9 @@ const Homepage: FC<HomepageProps> = ({
         <GamesComponent
           onClickBuyBtn={onClickBuyBtn}
           onClickAddToFavorite={onClickAddToFavorite}
-          products={products}
+          gameProducts={gameProducts}
         />
       </div>
-
       <div className="container">
         <div className="flex flex-col xl:flex-row mt-[48px] gap-[16px]">
           <div className="">

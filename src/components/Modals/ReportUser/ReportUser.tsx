@@ -14,7 +14,7 @@ const ReportUser: FC<ReportUserProps> = ({ closeModal }) => {
   };
 
   return (
-    <div className="flex flex-col gap-[24px]">
+    <div className="flex p-[16px] h-[100vh] md:h-auto justify-center md:p-0 flex-col gap-[24px]">
       <div className="flex justify-between">
         <div className="subtitle-blue">Повідомити, коли з'явиться</div>
       </div>

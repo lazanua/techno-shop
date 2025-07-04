@@ -1,15 +1,15 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import "./index.css";
-import Card from "../cards-components/Card/Card";
 import { Link } from "react-router-dom";
 import { ProductType } from "../../data/products";
-
+import arrowDownWhite from "../../assets/img/homepage/arrow-down-white.svg";
 import img1 from "../../assets/img/game-zone-products/1.png";
 import img2 from "../../assets/img/game-zone-products/2.png";
 import img3 from "../../assets/img/game-zone-products/3.png";
 import img4 from "../../assets/img/game-zone-products/4.png";
 import img5 from "../../assets/img/game-zone-products/5.png";
 import img6 from "../../assets/img/game-zone-products/6.png";
+import ProductsGrid from "../ProductsGrid/ProductsGrid";
 
 const categoryImages = [img1, img2, img3, img4, img5, img6];
 const categoryIndexes = [
@@ -29,13 +29,13 @@ interface GamesComponentProps {
     event: React.MouseEvent<HTMLButtonElement>,
     product: ProductType
   ) => void;
-  products: ProductType[];
+  gameProducts: ProductType[];
 }
 
 const GamesComponent: FC<GamesComponentProps> = ({
   onClickBuyBtn,
   onClickAddToFavorite,
-  products,
+  gameProducts,
 }) => {
   const gamesCategories = [
     "Клавіатури",
@@ -45,12 +45,36 @@ const GamesComponent: FC<GamesComponentProps> = ({
     "Відеокарти",
     "Монітори",
   ];
-  const gameProductsIndex = [2, 3, 4, 5, 8, 10];
+  const [width, setWidth] = useState(window.innerWidth);
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [categoryCount, setCategoryCount] = useState(gameProducts.length);
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  useEffect(() => {
+    switch (true) {
+      case width > 768:
+        setCategoryCount(6);
+        break;
+      case width > 640 && width <= 768:
+        setCategoryCount(isCategoryOpen ? gameProducts.length : 3);
+        break;
+      default:
+        setCategoryCount(isCategoryOpen ? gameProducts.length : 2);
+        break;
+    }
+  }, [width, isCategoryOpen]);
   return (
     <div className="game">
       <div className="container ">
         <div className="py-[40px] mx-auto">
-          <div className="flex gap-[16px] items-center">
+          <div className="flex gap-[16px] items-center mb-[24px]">
             <div className="h-[2px] w-[112px] bg-white"></div>
             <h2
               className="uppercase text-white text-semibold leading-[1.11] text-[36px]"
@@ -60,87 +84,77 @@ const GamesComponent: FC<GamesComponentProps> = ({
             </h2>
             <div className="h-[2px] w-[100%] bg-white"></div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-[16px] mt-[24px]">
-            {products.length !== 0 &&
-              gameProductsIndex.map((index) => (
-                <div className="" key={index}>
-                  <Card
-                    product={products[index]}
-                    onClickBuyBtn={onClickBuyBtn}
-                    id={products[index].id}
-                    onClickAddToFavorite={onClickAddToFavorite}
-                    onClickAddToCompare={onClickAddToFavorite}
-                  />
-                </div>
-              ))}
-          </div>
-          <div className="mt-[27px]">
-            <Link to="/" className="flex gap-[7px] items-center justify-end">
-              <span className="text-[14px] text text-white">
-                Дивитись усі товари
-              </span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3.33203 8H12.6654"
-                  stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M8 3.33398L12.6667 8.00065L8 12.6673"
-                  stroke="white"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </Link>
-          </div>
-          <h2 className="subtitle text-white">Категорії для геймерів</h2>
-          <div className="grid grid-cols-2 md:grid-cols-6 justify-center lg:justify-between gap-[16px]">
-            {gamesCategories.map((category, index) => (
-              <div className="" key={index}>
-                <Link
-                  to={`/categories/${categoryIndexes[index][0]}/${categoryIndexes[index][1]}`}
-                >
-                  <div
-                    className="bg-white  md:w-[160px] md:h-[160px]
+          <ProductsGrid
+            productsArr={gameProducts}
+            onClickBuyBtn={onClickBuyBtn}
+            onClickAddToFavorite={onClickAddToFavorite}
+            isWhiteText={true}
+          />
+
+          <div className="w-fit mx-auto">
+            <h2 className="subtitle text-white mt-[48px]">
+              Категорії для геймерів
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3  md:grid-cols-6 justify-center lg:justify-between gap-[16px]">
+              {gamesCategories
+                .slice(0, categoryCount)
+                .map((category, index) => (
+                  <div className="" key={index}>
+                    <Link
+                      to={`/categories/${categoryIndexes[index][0]}/${categoryIndexes[index][1]}`}
+                    >
+                      <div
+                        className="bg-white
                     w-[156px] h-[132px]
                   rounded-none
-                  lg:w-[170px] lg:h-[170px] xl:w-[199px] xl:h-[199px] 
+                  md:w-[120px] md:h-[120px]
+                  lg:w-[150px] lg:h-[150px] xl:w-[199px] xl:h-[199px] 
                   relative md:rounded-full cart__category-bg
                   overflow-hidden
                   md:overflow-visible
                   
                   "
-                  >
-                    <div
-                      className="absolute
-                    
-                    w-[120%] h-[120%] top-0 left-[-15px]
+                      >
+                        <div
+                          className="absolute
+                    w-[100%] h-[100%]
+                     md:w-[120%] md:h-[120%]  top-0 left-0 md:left-[-15px]
                   
                     "
-                    >
-                      <img src={categoryImages[index]} alt="" className="" />
-                    </div>
+                        >
+                          <img
+                            className="contain"
+                            src={categoryImages[index]}
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className="
+                  
+                  text-bold text-center text-[16px] lg:text-[18px] leading-[1.33] text-white mt-[16px]"
+                      >
+                        {category}
+                      </div>
+                    </Link>
                   </div>
-                  <div
-                    className="
-                  hidden md:block
-                  text-bold text-center text-[18px] leading-[1.33] text-white mt-[16px]"
-                  >
-                    {category}
-                  </div>
-                </Link>
-              </div>
-            ))}
+                ))}
+            </div>
+            <div className="flex w-full justify-between md:justify-end mt-[12px] ">
+              <button
+                className="flex gap-[4px] items-center md:hidden"
+                onClick={() => setIsCategoryOpen((prev) => !prev)}
+              >
+                <span className="link !text-[var(--white)] ">
+                  {isCategoryOpen ? "Сховати" : "Ще товари"}
+                </span>
+                <img src={arrowDownWhite} alt="" />
+              </button>
+              <button className="flex gap-[4px] items-center">
+                <span className="link !text-[var(--white)]">Дивитись усе</span>
+                <img src={arrowDownWhite} className="rotate-[-90deg]" alt="" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ import { ModalName, Tab } from "../../../pages/ProductPage/ProductPage";
 import ImagesScroll from "../../ImagesScroll/ImagesScroll";
 import ZoomImage from "../../ZoomImage/ZoomImage";
 import Price from "../../cards-components/Price/Price";
+import ImagesModal from "../../Modals/ImagesModal/ImagesModal";
 interface MainProps {
   currentProduct: ProductType;
   handleSetTab: (str: Tab) => void;
@@ -65,7 +66,10 @@ const Main: FC<MainProps> = ({
                 </div>
               )}
 
-              <div className="hidden md:block">
+              <div
+                onClick={() => openModal("images")}
+                className="hidden md:block"
+              >
                 <ZoomImage src={mainImage} width={580} height={580} />
               </div>
             </div>
@@ -127,11 +131,13 @@ const Main: FC<MainProps> = ({
 
           <div className="">
             <div className="flex justify-center mb-[10px] xl:contents w-full">
-              <img
-                className="block w-[328px] h-[328px] md:hidden"
-                src={mainImage}
-                alt=""
-              />
+              <div className="" onClick={() => openModal("images")}>
+                <img
+                  className="block w-[328px] h-[328px] md:hidden"
+                  src={mainImage}
+                  alt=""
+                />
+              </div>
             </div>
 
             {currentProduct.images[0] !== "" && (

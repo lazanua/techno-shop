@@ -19,13 +19,13 @@ const Footer: FC = () => {
   };
   return (
     <footer>
-      <div className="bg-dark py-[16px] xl:py-[30px] mt-[24px]">
+      <div className="bg-dark py-[16px] md:py-[30px] mt-[24px]">
         <div className="container ">
           <div className="flex xl:flex-nowrap flex-wrap items-start gap-x-[118px] justify-between mb-[10px]">
             <div className="hidden lg:block">
               <h3>Інформація</h3>
               <div className="flex flex-col gap-[12px]">
-                <a href="">Акциї</a>
+                <a href="">Акції</a>
                 <a href="">Кредит</a>
                 <a href="">Оплата та доставка</a>
                 <a href="">Гарантія</a>

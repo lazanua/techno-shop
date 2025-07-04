@@ -16,8 +16,8 @@ import CreditInfo from "../../components/Modals/CreditInfo/CreditInfo";
 import { categories } from "../../data/categories";
 import ImagesModal from "../../components/Modals/ImagesModal/ImagesModal";
 import { Link } from "react-router-dom";
-import Card from "../../components/cards-components/Card/Card";
 import arrowRight from "../../assets/img/product-page/arrow-right.svg";
+import ProductsGrid from "../../components/ProductsGrid/ProductsGrid";
 export type ModalName =
   | ""
   | "write-review"
@@ -52,6 +52,7 @@ const ProductPage: FC<ProductPageProps> = ({
   const [currentProduct, setCurrentProduct] = useState<ProductType>();
   const [tab, setTab] = useState<Tab>("main");
   const [currentModal, setCurrentModal] = useState<ModalName>("");
+
   const [similarProducts, setSimilarProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
@@ -89,13 +90,16 @@ const ProductPage: FC<ProductPageProps> = ({
   const handleSetTab = (str: Tab) => {
     setTab(str);
   };
-  console.log(currentProduct?.categoryId);
+
   return (
     <div className="">
       {currentProduct && (
         <div className="container">
-          <div className="w-full overflow-auto">
-            <div className="w-[1536px] flex gap-[10.5px] mt-[24px] md:mt-0  items-center mb-[51px]">
+          <div className="w-full overflow-auto no-scrollbar mb-[51px]">
+            <div
+              className="w-[1400px] flex gap-[10.5px] mt-[24px] lg:mt-0
+            items-center"
+            >
               <Link to="/">
                 <span className="link">Головна</span>
               </Link>
@@ -120,7 +124,11 @@ const ProductPage: FC<ProductPageProps> = ({
             </div>
           </div>
 
-          <div className="text-semibold mt-[24px] md:mt-0 text-[var(--dark)] text-[24px] md:text-[32px] leading-[1.12] mb-[12px]">
+          <div
+            className="text-semibold
+          mt-[75px] md:mt-0 text-[var(--dark)]
+          text-[24px] md:text-[32px] leading-[1.12] mb-[12px]"
+          >
             {currentProduct.title}
           </div>
           <div className="flex gap-[14px] items-center mb-[24px]">
@@ -261,18 +269,14 @@ const ProductPage: FC<ProductPageProps> = ({
               productToBasket={productToBasket}
             />
           )}
-          <h2 className="subtitle">Схожі товари</h2>
-          <div className="grid grid-cols-6 gap-[16px] ">
-            {similarProducts.map((product) => (
-              <Card
-                product={product}
-                onClickBuyBtn={onClickBuyBtn}
-                id={currentProduct.id}
-                onClickAddToFavorite={onClickAddToFavorite}
-                onClickAddToCompare={onClickAddToFavorite}
-              />
-            ))}
-          </div>
+          <h2 className="subtitle mt-[48px]">Схожі товари</h2>
+          <ProductsGrid
+            productsArr={similarProducts}
+            onClickBuyBtn={onClickBuyBtn}
+            onClickAddToFavorite={onClickAddToFavorite}
+            isWhiteText={false}
+            isProductPage={true}
+          />
         </div>
       )}
       {currentProduct && (
